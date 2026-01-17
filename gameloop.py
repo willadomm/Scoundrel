@@ -29,6 +29,7 @@ class Gamestate:
     def gameloop(self):
         self.room = self.deck[0:4]
         self.deck = self.deck[4:]
+        self.healthpotionused = False
     
         while len(self.room) > 1:
             counter = 1
@@ -55,10 +56,7 @@ class Gamestate:
         
             self.select(self.room[cardselect-1])
 
-
-            self.discard.append(cardselect-1)
-            
-            self.room.pop(cardselect-1)
+            self.discard.append(self.room.pop(cardselect-1))
 
  
         
