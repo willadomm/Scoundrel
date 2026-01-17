@@ -1,7 +1,9 @@
 import setup
+import gameloop
 
 def main():
-    setup.setup()
+    deck = setup.setup()
+    gameloop.Gamestate(deck)
 
 
 main()
