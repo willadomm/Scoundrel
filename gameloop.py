@@ -1,9 +1,10 @@
+import time
 import card
 
 
 class Gamestate:
     def __init__(self,deck,):
-        self.weapon = None
+        self.weapon = []
         self.life = 20
         self.deck = deck
         self.discard = []
@@ -18,11 +19,49 @@ class Gamestate:
         print("You selected " + card.Card.display(cardselection))
         match cardselection.getSuit():
             case "Hearts":
-                self.life = self.life + cardselection.getDigit()
-                if self.life > 20:
-                    self.life = 20
-                print("Your new life is: " + str(self.life))
-                self.healthpotionused = True
+                if self.healthpotionused == False:
+                    self.life = self.life + cardselection.getDigit()
+                    if self.life > 20:
+                        self.life = 20
+                    print("Your new life is: " + str(self.life))
+                    time.sleep(1)
+                    self.healthpotionused = True
+                else:
+                    print("You can only use one health potion per room!")
+            case "Diamonds":
+                if len(self.weapon) > 0:
+                    self.discard.append(self.weapon[0])
+                self.weapon = [cardselection, 100]
+                
+                print("Your new weapon is " + card.Card.display(cardselection))
+            case _:
+                self.fight(cardselection)
+
+    def fight(self, cardselection):
+        if len(self.weapon) > 0:
+            fightbool = input("Would you like to fight this monster with your equipped weapon?(Press y for yes): ")
+            if fightbool == "y" or fightbool == "Y":
+                self.fightwithweapon(cardselection)
+            else:
+                self.fightbarehanded(cardselection)
+        else:
+            self.fightbarehanded(cardselection)
+
+    def fightbarehanded(self, cardselection):
+        self.life = self.life - card.Card.getDigit(cardselection)
+        print("The monster did " + str(card.Card.getDigit(cardselection)) + " damage to you.")
+        time.sleep(1)
+        print("You are now at " + str(self.life) + " health")
+
+    def fightwithweapon(self, cardselection):
+        if (card.Card.getDigit(self.weapon[0])) - card.Card.getDigit(cardselection) > 0:
+            print("You took no damage from the monster, as your weapon was a hogher power.")
+            print("Your weapon can now only be used to slay monsters of less strength than " + str(card.Card.getDigit(cardselection)))
+
+
+
+
+
 
 
 

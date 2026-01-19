@@ -10,7 +10,7 @@ def setup():
     listofcards = []
 
     for i in [ "Spades", "Clubs"]:
-        for j in range(1,14):
+        for j in range(2,15):
             cards = card.Card(i,j)
             listofcards.append(cards)
     for i in ["Hearts", "Diamonds"]:

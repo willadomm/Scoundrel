@@ -15,7 +15,7 @@ class Card:
                 displayname = "Queen"
             case 13: 
                 displayname = "King"
-            case 1:
+            case 14:
                 displayname = "Ace"
             case _:
                 displayname = str(self.digit)
