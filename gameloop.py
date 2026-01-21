@@ -1,6 +1,14 @@
 import time
 import card
 
+"""
+TO DO:
+SCORING SYSTEM
+HIGH SCORE SAVING
+
+
+"""
+
 
 class Gamestate:
     def __init__(self,deck,):
@@ -103,6 +111,13 @@ class Gamestate:
             print() 
             print("Cards remaining in deck: " + str(len(self.deck)))
             exit()
+    
+    def wincondition(self):
+        print()
+        print("Congratulations, you have made it through the entire dungeon! You are free")
+        exit()
+
+
 
 
 
@@ -111,8 +126,14 @@ class Gamestate:
 
 
     def gameloop(self):
+
+        if len(self.deck) == 1:
+            self.select(self.deck[0])
+            self.wincondition()
         self.room = self.deck[0:4]
         self.deck = self.deck[4:]
+
+       
         self.healthpotionused = False
         self.roomcounter += 1
 
