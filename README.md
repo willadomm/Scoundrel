@@ -20,7 +20,7 @@ Your goal is to make it through the entire deck without your health dropping to 
 - Each room contains **4 cards** from the deck
 - You must choose cards **one at a time** until only one remains
 - The last card in each room is placed back on top of the deck for the next room
-- You can **skip one room** per game (but not consecutive rooms)
+- You can **skip as many rooms as you like** (but not consecutive rooms)
 - The deck does not contain any red face cards
 
 ### Card Effects
