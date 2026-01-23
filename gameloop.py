@@ -1,5 +1,6 @@
 import time
 import card
+import random
 
 """
 TO DO:
@@ -185,7 +186,14 @@ class Gamestate:
                     print(str(counter) + ". " + card.Card.display(i))
                     counter += 1
                 while cardselect < 1 or cardselect > len(self.room):
-                    cardselect = int(input("Which card would you like to choose first?: "))
+                    cardselect = input("Which card would you like to choose : ")
+                    if not cardselect.isnumeric():
+                        print()
+                        time.sleep(0.5)
+                        print("Error, you must pick a number. Picking a random card for you")
+                        cardselect = random.randint(1, len(self.room) + 1)
+                    else:
+                        cardselect = int(cardselect)
                     if cardselect < 1 or cardselect > len(self.room):
                         print("Please select a number from 1-4")
                 
