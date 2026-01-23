@@ -45,6 +45,7 @@ class Gamestate:
                 print("Your new weapon is " + card.Card.display(cardselection))
             case _:
                 self.fight(cardselection)
+                self.lifetotalcheck(cardselection)
 
     def fight(self, cardselection):
         if len(self.weapon) > 0:
