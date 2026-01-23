@@ -50,7 +50,12 @@ class Gamestate:
     def fight(self, cardselection):
         if len(self.weapon) > 0:
             if self.weapon[1] > card.Card.getDigit(cardselection):
+                
                 fightbool = input("Would you like to fight this monster with your equipped weapon?(Press y for yes): ")
+
+                if not (isinstance(fightbool, str)):
+                    self.fightbarehanded(cardselection)
+                
                 if fightbool == "y" or fightbool == "Y":
                     self.fightwithweapon(cardselection)
                 else:
