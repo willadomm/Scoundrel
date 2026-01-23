@@ -67,7 +67,8 @@ class Gamestate:
         self.life = self.life - card.Card.getDigit(cardselection)
         print("The monster did " + str(card.Card.getDigit(cardselection)) + " damage to you.")
         time.sleep(1)
-        print("You are now at " + str(self.life) + " health")
+        if (self.life > 0):
+            print("You are now at " + str(self.life) + " health")
 
     def fightwithweapon(self, cardselection):
         if (card.Card.getDigit(self.weapon[0])) - card.Card.getDigit(cardselection) >= 0:
@@ -79,7 +80,8 @@ class Gamestate:
             self.life = self.life - (card.Card.getDigit(cardselection) - card.Card.getDigit(self.weapon[0]))
             print("You took " + str(card.Card.getDigit(cardselection) - card.Card.getDigit(self.weapon[0])) + " damage from the monster. ")
             time.sleep(1)
-            print("Your life is now " + str(self.life))
+            if (self.life > 0):
+                print("Your life is now " + str(self.life))
     
 
     def constructroomdetails(self):
