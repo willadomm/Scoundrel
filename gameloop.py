@@ -136,9 +136,9 @@ class Gamestate:
 
     def gameloop(self):
 
-        if len(self.deck) == 1:
-            self.select(self.deck[0])
+        if len(self.deck) == 0:
             self.wincondition()
+        
         self.room = self.deck[0:4]
         self.deck = self.deck[4:]
 
@@ -153,6 +153,8 @@ class Gamestate:
 
 
         time.sleep(0.5)
+
+       
 
         if self.prevroomskipped == False and len(self.room) == 4:
             counter = 1
@@ -169,7 +171,9 @@ class Gamestate:
         else:
             skipask = "n"
 
-            
+        if len(self.deck) == 0 and len(self.room) == 1:
+            self.select(self.room[0])
+            self.discard.append(self.room.pop(0))
 
         while len(self.room) > 1:
             
